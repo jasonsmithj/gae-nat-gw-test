@@ -16,7 +16,13 @@
 
   @Component({
     async asyncData() {
-      const res = await axios.get("https://httpbin.org/ip")
+      //　The proxy server host and port should be set to the parameters of the Proxy Server you created.
+      const res = await axios.get('https://httpbin.org/ip', {
+        proxy: {
+        host: 'http://gae-proxy',
+          port: 18512
+        }
+      })
       return res.data
     }
   })
